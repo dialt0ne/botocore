@@ -15,7 +15,7 @@
       "name":"DownloadCompleteDBLogFile",
       "http":{
         "method":"GET",
-        "requestUri":"/v13/downloadCompleteLogFile/{DBInstanceIdentifier}/{LogFileName=}"
+        "requestUri":"/v13/downloadCompleteLogFile/{DBInstanceIdentifier}/{LogFileName+}"
       },
       "input":{
         "shape":"DownloadCompleteDBLogFileMessage"
