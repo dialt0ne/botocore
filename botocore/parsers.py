@@ -429,6 +429,16 @@ class BaseXMLResponseParser(ResponseParser):
 
 class NoneParser(ResponseParser):
 
+    def _do_error_parse(self, response, shape):
+        error = {
+            "Error": {
+                "Message": response['body'],
+                "Code": response['status_code'],
+            },
+            "ResponseMetadata": response['headers'],
+        }
+        return error
+
     def _do_parse(self, response, shape):
         return response['body']
 
