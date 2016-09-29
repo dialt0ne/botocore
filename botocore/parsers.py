@@ -427,6 +427,10 @@ class BaseXMLResponseParser(ResponseParser):
     _handle_double = _handle_float
     _handle_long = _handle_integer
 
+class NoneParser(ResponseParser):
+
+    def _do_parse(self, response, shape):
+        return response['body']
 
 class QueryParser(BaseXMLResponseParser):
 
@@ -779,4 +783,5 @@ PROTOCOL_PARSERS = {
     'json': JSONParser,
     'rest-json': RestJSONParser,
     'rest-xml': RestXMLParser,
+    'rest-none': NoneParser,
 }

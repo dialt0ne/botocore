@@ -731,6 +731,23 @@
             "eu-central-1": {}
           }
         },
+        "rds-rest": {
+          "endpoints": {
+            "us-east-1": {
+              "sslCommonName": "{service}.{dnsSuffix}"
+            },
+            "us-west-1": {},
+            "us-west-2": {},
+            "ap-northeast-1": {},
+            "ap-northeast-2": {},
+            "ap-southeast-1": {},
+            "ap-southeast-2": {},
+            "sa-east-1": {},
+            "eu-west-1": {},
+            "eu-central-1": {}
+          }
+        },
+
         "redshift": {
           "endpoints": {
             "us-east-1": {},

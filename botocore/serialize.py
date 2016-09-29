@@ -428,6 +428,9 @@ class BaseRestSerializer(Serializer):
             if template_param.endswith('+'):
                 encoded_params[template_param] = percent_encode(
                     params[template_param[:-1]], safe='/~')
+            elif template_param.endswith('='):
+                encoded_params[template_param] = percent_encode(
+                    params[template_param[:-1]], safe='/')
             else:
                 encoded_params[template_param] = percent_encode(
                     params[template_param])
@@ -628,4 +631,5 @@ SERIALIZERS = {
     'json': JSONSerializer,
     'rest-json': RestJSONSerializer,
     'rest-xml': RestXMLSerializer,
+    'rest-none': RestXMLSerializer,
 }
