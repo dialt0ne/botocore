@@ -427,20 +427,6 @@ class BaseXMLResponseParser(ResponseParser):
     _handle_double = _handle_float
     _handle_long = _handle_integer
 
-class NoneParser(ResponseParser):
-
-    def _do_error_parse(self, response, shape):
-        error = {
-            "Error": {
-                "Message": response['body'],
-                "Code": response['status_code'],
-            },
-            "ResponseMetadata": response['headers'],
-        }
-        return error
-
-    def _do_parse(self, response, shape):
-        return response['body']
 
 class QueryParser(BaseXMLResponseParser):
 
@@ -785,6 +771,19 @@ class RestXMLParser(BaseRestParser, BaseXMLResponseParser):
         default = {'Error': {'Message': '', 'Code': ''}}
         merge_dicts(default, parsed)
         return default
+
+
+class NoneParser(BaseRestParser):
+
+    def _do_error_parse(self, response, shape):
+        error = {
+            "Error": {
+                "Message": response['body'],
+                "Code": response['status_code'],
+            },
+            "ResponseMetadata": response['headers'],
+        }
+        return error
 
 
 PROTOCOL_PARSERS = {

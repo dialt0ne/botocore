@@ -35,11 +35,13 @@
     "DownloadCompleteDBLogFileDetails":{
       "type":"structure",
       "members":{
-        "body":{
+        "Body":{
           "shape":"Stream",
+          "streaming":true,
           "documentation":"<p>The contents of the log file.</p>"
         }
       },
+      "payload": "Body",
       "documentation":"<p>This data type is used as a response element to <a>DownloadCompleteDBLogFile</a>.</p>"
     },
     "DownloadCompleteDBLogFileMessage":{
